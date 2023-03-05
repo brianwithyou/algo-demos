@@ -5,20 +5,10 @@ package com.brian.leet06ReverseLinkedList;
  * @author : brian
  * @since 0.1
  */
-class Solution {
+class Solution1 {
     public ListNode reverseList(ListNode head) {
 
-        ListNode pre = null;
-        ListNode cur = head;
-        while (cur != null) {
-            ListNode next = cur.next;
-            cur.next = pre;
-
-            pre = cur;
-            cur = next;
-
-        }
-        return pre;
+        return null;
     }
 
     public static void main(String[] args) {
@@ -36,7 +26,7 @@ class Solution {
 //        }
 
 
-        ListNode temp = new Solution().reverseList(head);
+        ListNode temp = new Solution1().reverseList(head);
 
         while (temp != null) {
             System.out.printf(temp.val + ", ");
