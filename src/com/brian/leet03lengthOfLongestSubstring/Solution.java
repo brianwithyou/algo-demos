@@ -16,35 +16,40 @@ public class Solution {
     public int lengthOfLongestSubstring(String s) {
 
         Set<Character> set = new HashSet<>();
-        // rightIdx = -1 时， result = Math.max(result, rightIdx - i + 1);
-        int rightIdx = 0;
-        int result = 0;
-
+        int res = 0;
+        int rightIdx = -1;
         for (int i = 0; i < s.length(); i++) {
             if (i != 0) {
                 set.remove(s.charAt(i - 1));
             }
-            while (rightIdx < s.length() && !set.contains(s.charAt(rightIdx))) {
-                set.add(s.charAt(rightIdx));
+            while (rightIdx + 1 < s.length() && !set.contains(s.charAt(rightIdx + 1))) {
+                set.add(s.charAt(rightIdx + 1));
                 rightIdx++;
             }
-            result = Math.max(result, rightIdx - i);
+
+            res = Math.max(res, rightIdx - i + 1);
         }
-        return result;
+        return res;
     }
 
+    /**
+     *     for循环内是右侧指针，思路是 右侧指针固定，左侧指针变动，
+     *     上面的方法是 左侧指针固定 右侧指针变动
+     *     也能用动态规划 可以练习动态规划
+     */
     public int lengthOfLongestSubstring2(String s) {
 
         if (s .length() == 0) {
             return 0;
         }
         int res = 0;
-        // left 为最右边的那个元素索引
+        // left 滑动窗口最左侧，取值逻辑为已存在元素的最右侧那个 与 原来left的max，解决 abca(left = 1)和 abba(left = 2)两种问题
         int left  = 0;
         // 存放滑动窗口的左边界指针
         Map<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
             if (map.containsKey(s.charAt(i))) {
+                // 解决 abca  abba的两种情况
                 left = Math.max(left, map.get(s.charAt(i)) + 1);
             }
             map.put(s.charAt(i), i);
