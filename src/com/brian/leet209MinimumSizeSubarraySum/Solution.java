@@ -11,6 +11,8 @@ package com.brian.leet209MinimumSizeSubarraySum;
  * 输入：target = 4, nums = [1,4,4]
  * 输出：1
  *
+ * 【类比：第3题】
+ *
  * @link <a href="https://leetcode.cn/problems/minimum-size-subarray-sum"></a>
  * @author : brian
  * @since 0.1
