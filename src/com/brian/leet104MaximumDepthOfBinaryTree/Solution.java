@@ -18,6 +18,15 @@ public class Solution {
         return res;
     }
 
+    /**
+     * 简化
+     */
+    public int maxDepth1(TreeNode root) {
+        if (root == null)
+            return 0;
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+    }
+
 
     public static class TreeNode {
         int val;
