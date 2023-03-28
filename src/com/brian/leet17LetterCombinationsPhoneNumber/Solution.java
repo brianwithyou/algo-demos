@@ -16,6 +16,11 @@ public class Solution {
 
     String[] letterDict = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
+    /**
+     * 自顶向下  还是自底向上？怎么判断
+     * 两种方法都可以解决问题
+     * 1. 递归函数有返回值，可以自底向上，2. 递归函数没有返回值，可以使用外层递归构建的值当做param传进递归函数中(函数形参需要加入这个param)。
+     */
     public List<String> letterCombinations(String digits) {
         if (digits == null || "".equals(digits)) {
             return new ArrayList<>();
