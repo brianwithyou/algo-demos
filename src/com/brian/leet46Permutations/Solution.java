@@ -27,11 +27,7 @@ public class Solution {
 
     /**
      *
-     * @param nums
      * @param index index只是用于记录是否结束
-     * @param used
-     * @param ans
-     * @param res
      */
     public void permute(int[] nums, int index, boolean[] used, List<Integer> ans, List<List<Integer>> res) {
         if (index == nums.length) {
@@ -44,7 +40,6 @@ public class Solution {
             if (!used[i]) {
                 ans.add(nums[i]);
                 used[i] = true;
-                System.out.println(ans);
                 // 递归计算后面的，递归完成会返回这里，此时已经取回一种结果，需要把used状态恢复
                 permute(nums, index + 1, used, ans, res);
 
