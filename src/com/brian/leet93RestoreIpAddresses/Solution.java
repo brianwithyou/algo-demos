@@ -27,20 +27,16 @@ public class Solution {
             return new ArrayList<>();
         }
 
-        restore(s, 0, new ArrayList<>(), result, 1);
+        restore(s, 0, new ArrayList<>(), 1);
 
         return result;
     }
 
     /**
      *
-     * @param s
-     * @param index
-     * @param tempStr
-     * @param result
      * @param n 一共4段，正在寻找第n段
      */
-    private void restore(String s, int index, List<String> tempStr, List<String> result, int n) {
+    private void restore(String s, int index, List<String> tempStr, int n) {
         if (n > 5) {
             return;
         }
@@ -56,7 +52,7 @@ public class Solution {
             if (isIpSeg(s.substring(index, index + i + 1))) {
 
                 tempStr.add(s.substring(index, index + i + 1));
-                restore(s, index + i + 1, tempStr, result, n + 1);
+                restore(s, index + i + 1, tempStr, n + 1);
 
                 tempStr.remove(tempStr.size() - 1);
             }
@@ -67,8 +63,8 @@ public class Solution {
             return s.length() < 4 && !s.startsWith("0") && Integer.parseInt(s) >= 0 && Integer.parseInt(s) <= 255;
         else if (s.length() == 1)
             return Integer.parseInt(s) >= 0 && Integer.parseInt(s) <= 9;
-        else
-            return false;
+
+        return false;
     }
 
     public static void main(String[] args) {
@@ -76,8 +72,5 @@ public class Solution {
         List<String> strings = new Solution().restoreIpAddresses(test);
         System.out.println();
 
-//        StringBuilder tempStrBuilder = new StringBuilder("255.255.111.35");
-//        tempStrBuilder.delete(tempStrBuilder.lastIndexOf("."), tempStrBuilder.length());
-//        System.out.println(tempStrBuilder);
     }
 }

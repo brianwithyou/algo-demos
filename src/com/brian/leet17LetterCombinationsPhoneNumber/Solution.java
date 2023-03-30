@@ -43,7 +43,13 @@ public class Solution {
         // abc
         String str = letterDict[digits.charAt(index) - '0'];
         for (int i = 0; i < str.length(); i++) {
+            // 注意传入的tempStr是个新的字符串，就不需要还原此次的修改，如果传入的是同一个字符串，则需要还原此次修改
             findCombination(result, digits, index + 1, tempStr + str.charAt(i));
+            // 传入上次传入的字符串时，需要还原此次的取值，应该这么写
+//            tempStr = tempStr + str.charAt(i);
+//            findCombination(result, digits, index + 1, tempStr);
+//            tempStr = tempStr.substring(0, tempStr.length() - 1);
+
         }
     }
 }

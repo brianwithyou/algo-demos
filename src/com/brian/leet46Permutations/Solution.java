@@ -12,15 +12,16 @@ import java.util.List;
  */
 public class Solution {
 
+    List<List<Integer>> res = new ArrayList<>();
+    boolean[] used;
     public List<List<Integer>> permute(int[] nums) {
+        used = new boolean[nums.length];
         if (nums.length == 0) {
             return new ArrayList<>();
         }
-        List<List<Integer>> res = new ArrayList<>();
         List<Integer> ans = new ArrayList<>();
-        boolean[] used = new boolean[nums.length];
 
-        permute(nums, 0, used, ans, res);
+        permute(nums, 0, ans);
 
         return res;
     }
@@ -29,7 +30,7 @@ public class Solution {
      *
      * @param index index只是用于记录是否结束
      */
-    public void permute(int[] nums, int index, boolean[] used, List<Integer> ans, List<List<Integer>> res) {
+    public void permute(int[] nums, int index, List<Integer> ans) {
         if (index == nums.length) {
             // 注意 这里只能是新建一个对象
             res.add(new ArrayList<>(ans));
@@ -41,7 +42,7 @@ public class Solution {
                 ans.add(nums[i]);
                 used[i] = true;
                 // 递归计算后面的，递归完成会返回这里，此时已经取回一种结果，需要把used状态恢复
-                permute(nums, index + 1, used, ans, res);
+                permute(nums, index + 1, ans);
 
                 used[i] = false;
                 ans.remove(ans.size() - 1);
@@ -54,7 +55,5 @@ public class Solution {
         List<List<Integer>> permute = new Solution().permute(nums);
         System.out.println(permute);
     }
-
-
 
 }
