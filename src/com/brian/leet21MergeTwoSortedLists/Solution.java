@@ -13,6 +13,11 @@ package com.brian.leet21MergeTwoSortedLists;
  */
 public class Solution {
 
+    /**
+     * 1. 递归 Solution
+     * 2. 新建链表存储result  Solution1
+     * 3. 在原链表上修改指针   Solution2
+     */
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 
         if (list1 == null)
