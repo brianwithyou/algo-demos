@@ -48,27 +48,34 @@ public class Solution {
 
         int queryIdx = 0;
         int patternIdx = 0;
+        // query 和 pattern 匹配没结束时
         while (queryIdx < query.length() || patternIdx < pattern.length()) {
+            // pattern结束，query没结束
             if (queryIdx < query.length() && patternIdx >= pattern.length()) {
                 if (Character.isUpperCase(query.charAt(queryIdx))) {
                     return false;
                 } else {
                     queryIdx++;
                 }
-            } else if (queryIdx >= query.length() && patternIdx < pattern.length()) {
+            } else if (queryIdx >= query.length() && patternIdx < pattern.length()) {   // query结束 pattern没结束
                 return false;
-            } else { // if (queryIdx < query.length() && patternIdx < pattern.length())
+            } else { // if (queryIdx < query.length() && patternIdx < pattern.length()) // 都没匹配到结尾
 
+                // query[i]、pattern[j]都是是大写
                 if (Character.isUpperCase(query.charAt(queryIdx)) && Character.isUpperCase(pattern.charAt(patternIdx))) {
                     if (query.charAt(queryIdx) != pattern.charAt(patternIdx)) {
                         return false;
                     }
                     patternIdx++;
                     queryIdx++;
+
+                    // query[i]小写，pattern[j]大写
                 } else if (Character.isLowerCase(query.charAt(queryIdx)) && Character.isUpperCase(pattern.charAt(patternIdx))){
                     queryIdx++;
+                    // query[i]大写，pattern[j]小写
                 } else if (Character.isUpperCase(query.charAt(queryIdx)) && Character.isLowerCase(pattern.charAt(patternIdx))) {
                     return false;
+                    // 都是小写
                 } else if (Character.isLowerCase(query.charAt(queryIdx)) && Character.isLowerCase(pattern.charAt(patternIdx))) {
                     if (query.charAt(queryIdx) == pattern.charAt(patternIdx)) {
                         queryIdx++;
