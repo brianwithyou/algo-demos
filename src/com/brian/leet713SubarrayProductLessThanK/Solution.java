@@ -41,6 +41,9 @@ public class Solution {
             right++;
         }
 
+        // 类似这种 一次 增加一个 区间result( right - left)的问题，不方便用 while(left < length)  因为 right指针只向后移动
+        // 可以用 while(right < length) 此时 left每向后一步 都可以 right - left
+        // 例如：[10,5,2,6]  四次循环，每次循环记录 以 right为结尾的 results，  [10],  [10,5] [5] , [5,2] [2]，  [5,2,6] [2,6] [6]
         // 以left 为指针 遍历 不好想 give up 放弃
 //        while (left < nums.length) {
 //            if (right + 1 < nums.length && product * nums[right + 1] < k) {
