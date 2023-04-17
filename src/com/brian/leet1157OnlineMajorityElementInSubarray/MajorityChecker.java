@@ -126,26 +126,27 @@ public class MajorityChecker {
         }
         return low;
     }
-}
 
-class Node {
-    int x;
-    int cnt;
-    public Node() {
-        this(0, 0);
-    }
-    public Node(int x, int cnt) {
-        this.x = x;
-        this.cnt = cnt;
-    }
-    public void add(Node that) {
-        if (x == that.x) {
-            cnt += that.cnt;
-        } else if (cnt >= that.cnt) {
-            cnt -= that.cnt;
-        } else {
-            x = that.x;
-            cnt = that.cnt - cnt;
+    public static class Node {
+        int x;
+        int cnt;
+        public Node() {
+            this(0, 0);
+        }
+        public Node(int x, int cnt) {
+            this.x = x;
+            this.cnt = cnt;
+        }
+        public void add(Node that) {
+            if (x == that.x) {
+                cnt += that.cnt;
+            } else if (cnt >= that.cnt) {
+                cnt -= that.cnt;
+            } else {
+                x = that.x;
+                cnt = that.cnt - cnt;
+            }
         }
     }
+
 }
