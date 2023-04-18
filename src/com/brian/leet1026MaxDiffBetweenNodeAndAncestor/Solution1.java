@@ -32,29 +32,29 @@ package com.brian.leet1026MaxDiffBetweenNodeAndAncestor;
  * @author : brian
  * @since 0.1
  */
-public class Solution {
-    int max = Integer.MIN_VALUE;
+public class Solution1 {
+
+    int diff = Integer.MIN_VALUE;
+
+    /**
+     * 思路：找每条深度 路径上的 min 和max
+     * 因为每条深度路径上的节点 必定是 ancestor or child
+     */
     public int maxAncestorDiff(TreeNode root) {
-        if (root == null || (root.left == null && root.right == null)) {
-            return 0;
-        }
-
-        maxAncestorDiff(root, root.val);
-        if (root.left != null)
-            max = Math.max(max, maxAncestorDiff(root.left));
-        if (root.right != null)
-            max = Math.max(max, maxAncestorDiff(root.right));
-
-        return max;
+        return maxAncestorDiff(root, root.val, root.val);
     }
-    public void maxAncestorDiff(TreeNode root, int value) {
-        if (root == null) {
-            return;
-        }
-        max = Math.max(max, Math.abs(value - root.val));
-//        System.out.printf("value - cur.val: %s - %s = %s, \n", value , root.val, max);
-        maxAncestorDiff(root.left, value);
-        maxAncestorDiff(root.right, value);
+    public int maxAncestorDiff(TreeNode root, int min, int max) {
+        if (root == null)
+            return 0;
+        diff = Math.max(Math.abs(min - root.val), Math.abs(max - root.val));
+        // 每次更新本条路径上的 min 和max
+        min = Math.min(min, root.val);
+        max = Math.max(max, root.val);
+
+        diff = Math.max(diff, maxAncestorDiff(root.left, min, max));
+        diff = Math.max(diff, maxAncestorDiff(root.right, min, max));
+
+        return diff;
     }
 
     public static class TreeNode {
@@ -76,7 +76,8 @@ public class Solution {
         root.left.left = new TreeNode(0);
         root.left.left.right = new TreeNode(3);
 
-        new Solution().maxAncestorDiff(root);
+        int i = new Solution1().maxAncestorDiff(root);
+        System.out.println(i);
 
     }
 
