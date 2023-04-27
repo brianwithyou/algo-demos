@@ -1,5 +1,7 @@
 package com.brian.offer.offer59SlidingWindowMaximum;
 
+import java.util.PriorityQueue;
+
 /**
  * 剑指 Offer 59 - I. 滑动窗口的最大值
  * 给定一个数组 nums 和滑动窗口的大小 k，请找出所有滑动窗口里的最大值。
@@ -29,7 +31,29 @@ package com.brian.offer.offer59SlidingWindowMaximum;
 public class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
 
-        return null;
+        int left = 0, right = -1;
+        int[] res = new int[nums.length - k + 1];
+        int cur = 0;
+        PriorityQueue<int[]> queue = new PriorityQueue<>((o1, o2) -> o1[0] == o2[0] ? o2[1] - o1[1] : o2[0] - o1[0]);
+        while (right < nums.length) {
+            while (right - left + 1 < k) {
+                right++;
+                queue.add(new int[]{nums[right], right});
+            }
+            res[cur] = queue.peek()[0];
+            cur++;
+            if (right + 1 == nums.length) {
+                break;
+            }
+            left++;
+            right++;
+            queue.add(new int[]{nums[right], right});
+            // 一直移除max元素，直到移除了left左边那个元素，不超时，但是Solution0, 移除指定元素 超时
+            while (queue.peek()[1] < left) {
+                queue.poll();
+            }
+        }
+        return res;
     }
 
 }
