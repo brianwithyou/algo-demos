@@ -1,8 +1,8 @@
 package com.brian.offer.offer38permutation;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 剑指 Offer 38. 字符串的排列
@@ -12,6 +12,8 @@ import java.util.List;
  * 输入：s = "abc"
  * 输出：["abc","acb","bac","bca","cab","cba"]
  *
+ * "aab"
+ * ["aba","aab","baa"]
  * 限制：
  * 1 <= s 的长度 <= 8
  *
@@ -19,7 +21,7 @@ import java.util.List;
  * @since 0.1
  */
 public class Solution {
-    List<String> res = new ArrayList<>();
+    Set<String> res = new HashSet<>();
     boolean[] used;
     public String[] permutation(String s) {
         used = new boolean[s.length()];
