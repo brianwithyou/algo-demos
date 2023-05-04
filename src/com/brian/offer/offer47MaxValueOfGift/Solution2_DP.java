@@ -1,4 +1,4 @@
-package com.brian.offer47MaxValueOfGift;
+package com.brian.offer.offer47MaxValueOfGift;
 
 import java.util.Arrays;
 

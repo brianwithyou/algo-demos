@@ -1,4 +1,4 @@
-package com.brian.offer26SubStructureOfTree;
+package com.brian.offer.offer26SubStructureOfTree;
 
 /**
  * 剑指 Offer 26. 树的子结构

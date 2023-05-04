@@ -1,4 +1,4 @@
-package com.brian.offer64;
+package com.brian.offer.offer64;
 
 /**
  * 剑指 Offer 64. 求1+2+…+n

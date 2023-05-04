@@ -1,4 +1,4 @@
-package com.brian.offer22getKthFromEnd;
+package com.brian.offer.offer22getKthFromEnd;
 
 /**
  * @author : brian

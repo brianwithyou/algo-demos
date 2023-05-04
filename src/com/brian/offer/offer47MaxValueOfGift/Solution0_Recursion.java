@@ -1,4 +1,4 @@
-package com.brian.offer47MaxValueOfGift;
+package com.brian.offer.offer47MaxValueOfGift;
 
 /**
  * 在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。
@@ -19,33 +19,26 @@ package com.brian.offer47MaxValueOfGift;
  * @author : brian
  * @since 0.1
  */
-public class Solution1_MemorySearch {
+public class Solution0_Recursion {
     int m, n;
-    int[][] memory;
     public int maxValue(int[][] grid) {
         m = grid.length;
         n = grid[0].length;
-        memory = new int[m][n];
 
         return maxValue(grid, 0, 0);
     }
+    // 超时
     public int maxValue(int[][] grid, int startX, int startY) {
 
-        if (startX == m - 1 && startY == n - 1) {
-            memory[startX][startY] = grid[startX][startY];
+        if (startX == m - 1 && startY == n - 1)
+            return grid[startX][startY];
 
-            return memory[startX][startY];
-        }
-
-        if (memory[startX][startY] != 0)
-            return memory[startX][startY];
         int res = 0;
         if (inArea(startX + 1, startY))
             res = grid[startX][startY] + maxValue(grid, startX + 1, startY);
         if (inArea(startX, startY + 1))
             res = Math.max(res, grid[startX][startY] + maxValue(grid, startX, startY + 1));
-        memory[startX][startY] = res;
-        return memory[startX][startY];
+        return res;
     }
 
     public boolean inArea(int startX, int startY) {

@@ -1,4 +1,4 @@
-package com.brian.offer54TheKthNodeInBst;
+package com.brian.offer.offer54TheKthNodeInBst;
 
 /**
  * 给定一棵二叉搜索树，请找出其中第 k 大的节点的值。

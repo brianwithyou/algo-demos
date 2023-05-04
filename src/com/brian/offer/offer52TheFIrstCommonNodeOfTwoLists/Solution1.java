@@ -1,4 +1,4 @@
-package com.brian.offer52TheFIrstCommonNodeOfTwoLists;
+package com.brian.offer.offer52TheFIrstCommonNodeOfTwoLists;
 
 import com.brian.util.ListUtil.ListNode;
 

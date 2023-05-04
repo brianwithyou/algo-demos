@@ -1,4 +1,4 @@
-package com.brian.offer64;
+package com.brian.offer.offer64;
 
 /**
  * 剑指 Offer 64. 求1+2+…+n
@@ -14,17 +14,12 @@ package com.brian.offer64;
  * @author : brian
  * @since 0.1
  */
-public class Solution2 {
+public class Solution0_Recursion_TLE {
     /**
      * 使用 三目运算符时
      */
-    int[] test = new int[]{0};
     public int sumNums(int n) {
-        try {
-            return test[n];
-        } catch (Exception e) {
-            return n + sumNums(n - 1);
-        }
+        return n == 0 ? 0 : n + sumNums(n - 1);
     }
 
 }
