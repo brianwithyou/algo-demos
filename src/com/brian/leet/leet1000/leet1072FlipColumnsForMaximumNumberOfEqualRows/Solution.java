@@ -35,7 +35,7 @@ import java.util.Map;
  */
 public class Solution {
     /**
-     * TODO CVπ
+     * TODO CV
      * 作者：LeetCode-Solution
      * 链接：https://leetcode.cn/problems/flip-columns-for-maximum-number-of-equal-rows/solution/an-lie-fan-zhuan-de-dao-zui-da-zhi-deng-teeig/
      * 来源：力扣（LeetCode）
